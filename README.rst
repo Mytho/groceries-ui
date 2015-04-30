@@ -1,3 +1,6 @@
+.. image:: https://api.travis-ci.org/Mytho/groceries-ui.svg
+  :target: https://travis-ci.org/Mytho/groceries-ui
+
 ============
 GROCERIES UI
 ============
