@@ -21,10 +21,15 @@ module.exports = function(grunt) {
                 globalstrict: true,
                 globals: {
                     angular: true,
+                    beforeEach: true,
+                    describe: true,
+                    expect: true,
+                    inject: true,
+                    it: true,
                     module: true
                 }
             },
-            before: ['Gruntfile.js', 'karma.conf.js', 'src/js/groceries/**/*.js']
+            before: ['Gruntfile.js', 'karma.conf.js', 'tests/**/*.js', 'src/js/groceries/**/*.js']
         },
         uglify: {
             options: {
@@ -38,7 +43,7 @@ module.exports = function(grunt) {
         },
         watch: {
             js: {
-                files: ['Gruntfile.js', 'karma.conf.js', 'src/js/groceries/**/*.js'],
+                files: ['Gruntfile.js', 'karma.conf.js', 'tests/**/*.js', 'src/js/groceries/**/*.js'],
                 tasks: ['jshint', 'concat', 'uglify']
             }
         }
