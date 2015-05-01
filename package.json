@@ -4,6 +4,7 @@
   "description": "A web interface for the Groceries API",
   "scripts": {
     "preinstall": "npm install -g grunt-cli",
+		"pretest": "grunt jshint",
     "test": "node ./node_modules/karma/bin/karma start"
   },
   "repository": {
