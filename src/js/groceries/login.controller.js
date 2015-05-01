@@ -5,9 +5,9 @@
         .module('groceries')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location', '$log', 'localStorage'];
+    LoginController.$inject = ['$location', '$log', 'localStorageService'];
 
-    function LoginController($location, $log, localStorage) {
+    function LoginController($location, $log, localStorageService) {
         var vm = this;
 
         vm.login = login;
@@ -17,7 +17,7 @@
         activate();
 
         function activate() {
-            if (localStorage.get('token')) {
+            if (localStorageService.get('token')) {
                 $log.debug('Token found, redirecting...');
                 redirect();
                 return;
@@ -26,7 +26,7 @@
 
         function login() {
             if (vm.username == 'tester' && vm.password == 'tester') {
-                localStorage.set('token', 'A-TEST-TOKEN');
+                localStorageService.set('token', 'A-TEST-TOKEN');
                 $log.debug('Login correct, redirecting...');
                 redirect();
                 return;

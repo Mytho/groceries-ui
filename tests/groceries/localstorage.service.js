@@ -1,7 +1,7 @@
 'use strict';
 
-describe('localStorage', function() {
-    var $window, localStorage, key, val;
+describe('localStorageService', function() {
+    var $window, localStorageService, key, val;
 
     beforeEach(module('groceries'));
 
@@ -9,7 +9,7 @@ describe('localStorage', function() {
         key = 'hello';
         val = 'world!';
         $window = $injector.get('$window');
-        localStorage = $injector.get('localStorage');
+        localStorageService = $injector.get('localStorageService');
     }));
 
     afterEach(inject(function($injector) {
@@ -17,22 +17,22 @@ describe('localStorage', function() {
     }));
 
     it('should get values, returning a default otherwise', function() {
-        expect(localStorage.get(key)).toBe(undefined);
-        expect(localStorage.get(key, val)).toBe(val);
+        expect(localStorageService.get(key)).toBe(undefined);
+        expect(localStorageService.get(key, val)).toBe(val);
         $window.localStorage[key] = val;
-        expect(localStorage.get(key)).toBe(val);
+        expect(localStorageService.get(key)).toBe(val);
     });
 
     it('should set values', function() {
         expect($window.localStorage[key]).toBe(undefined);
-        expect(localStorage.set(key, val));
+        expect(localStorageService.set(key, val));
         expect($window.localStorage[key]).toBe(val);
     });
 
     it('should remove values', function() {
         $window.localStorage[key] = val;
         expect($window.localStorage[key]).toBe(val);
-        expect(localStorage.remove(key));
+        expect(localStorageService.remove(key));
         expect($window.localStorage[key]).toBe(undefined);
     });
 });

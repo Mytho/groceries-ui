@@ -1,7 +1,7 @@
 'use strict';
 
 describe('LoginController', function() {
-    var $controller, $location, $log, localStorage;
+    var $controller, $location, $log, localStorageService;
 
     beforeEach(module('groceries'));
 
@@ -9,16 +9,16 @@ describe('LoginController', function() {
         $controller = $injector.get('$controller');
         $location = $injector.get('$location');
         $log = $injector.get('$log');
-        localStorage = $injector.get('localStorage');
+        localStorageService = $injector.get('localStorageService');
     }));
 
     it('should redirect when a token is present', function() {
         var controller;
-        localStorage.set('token', 'A-TEST-TOKEN');
+        localStorageService.set('token', 'A-TEST-TOKEN');
         controller = $controller('LoginController', {
             $location: $location,
             $log: $log,
-            localStorage: localStorage
+            localStorageService: localStorageService
         });
         expect($location.path()).toBe('/list');
     });
@@ -27,7 +27,7 @@ describe('LoginController', function() {
         var controller = $controller('LoginController', {
             $location: $location,
             $log: $log,
-            localStorage: localStorage
+            localStorageService: localStorageService
         });
         controller.username = 'tester';
         controller.password = 'tester';
