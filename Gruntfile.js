@@ -28,10 +28,19 @@ module.exports = function(grunt) {
                     expect: true,
                     inject: true,
                     it: true,
-                    module: true
+                    module: true,
+                    spyOn: true
                 }
             },
             before: ['Gruntfile.js', 'karma.conf.js', 'tests/**/*.js', 'src/js/groceries/**/*.js']
+        },
+        karma: {
+            options: {
+                configFile: 'karma.conf.js'
+            },
+            watch: {
+                singleRun: false
+            }
         },
         uglify: {
             options: {
@@ -55,6 +64,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('build', function() {
         grunt.task.run(['jshint', 'concat', 'uglify']);

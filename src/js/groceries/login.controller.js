@@ -19,7 +19,6 @@
         function activate() {
             if (localStorageService.get('token')) {
                 redirect();
-                return;
             }
         }
 
