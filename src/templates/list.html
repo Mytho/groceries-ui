@@ -1,1 +1,1 @@
-<div ng-repeat="item in vm.items">{{item.name}}</div>
+<div ng-repeat="item in vm.items" ng-click="vm.toggle(item)" ng-class="{strike: item.is_bought}">{{item.name}}</div>
