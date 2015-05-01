@@ -25,7 +25,7 @@
         }
 
         function login() {
-            if (vm.username == 'teun' && vm.password == 'teun') {
+            if (vm.username == 'tester' && vm.password == 'tester') {
                 localStorage.set('token', 'A-TEST-TOKEN');
                 $log.debug('Login correct, redirecting...');
                 redirect();

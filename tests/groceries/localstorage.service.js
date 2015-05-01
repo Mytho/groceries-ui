@@ -1,6 +1,6 @@
 'use strict';
 
-describe('groceries', function() {
+describe('localStorage', function() {
     var $window, localStorage, key, val;
 
     beforeEach(module('groceries'));
@@ -16,20 +16,20 @@ describe('groceries', function() {
         delete $window.localStorage[key];
     }));
 
-    it('should get localStorage values, returning a default otherwise', function() {
+    it('should get values, returning a default otherwise', function() {
         expect(localStorage.get(key)).toBe(undefined);
         expect(localStorage.get(key, val)).toBe(val);
         $window.localStorage[key] = val;
         expect(localStorage.get(key)).toBe(val);
     });
 
-    it('should set localStorage values', function() {
+    it('should set values', function() {
         expect($window.localStorage[key]).toBe(undefined);
         expect(localStorage.set(key, val));
         expect($window.localStorage[key]).toBe(val);
     });
 
-    it('should remove localStorage values', function() {
+    it('should remove values', function() {
         $window.localStorage[key] = val;
         expect($window.localStorage[key]).toBe(val);
         expect(localStorage.remove(key));
