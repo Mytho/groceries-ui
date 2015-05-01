@@ -3,11 +3,11 @@
 
     angular
         .module('groceries')
-        .service('localStorage', localStorage);
+        .service('localStorageService', localStorageService);
 
-    localStorage.$inject = ['$window'];
+    localStorageService.$inject = ['$window'];
 
-    function localStorage($window) {
+    function localStorageService($window) {
         return {
             get: get,
             set: set,

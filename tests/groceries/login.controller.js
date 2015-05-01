@@ -1,37 +1,48 @@
 'use strict';
 
 describe('LoginController', function() {
-    var $controller, $location, $log, localStorage;
+    var $controller, $location, $httpBackend, authService, localStorageService;
 
     beforeEach(module('groceries'));
 
     beforeEach(inject(function($injector) {
         $controller = $injector.get('$controller');
         $location = $injector.get('$location');
-        $log = $injector.get('$log');
-        localStorage = $injector.get('localStorage');
+        authService = $injector.get('authService');
+        localStorageService = $injector.get('localStorageService');
+    }));
+
+    afterEach(inject(function($injector) {
+        localStorageService.remove('token');
     }));
 
     it('should redirect when a token is present', function() {
         var controller;
-        localStorage.set('token', 'A-TEST-TOKEN');
+        localStorageService.set('token', 'A-TEST-TOKEN');
         controller = $controller('LoginController', {
             $location: $location,
-            $log: $log,
-            localStorage: localStorage
+            authService: authService,
+            localStorageService: localStorageService
         });
         expect($location.path()).toBe('/list');
     });
 
-    it('should redirect on a correct login', function() {
-        var controller = $controller('LoginController', {
-            $location: $location,
-            $log: $log,
-            localStorage: localStorage
+    it('should store the token and redirect on a correct login', function() {
+        var controller, token;
+        token = 'A-Test-Token';
+        spyOn(authService, 'login').and.returnValue({
+            then: function(callback) { return callback(token); }
         });
-        controller.username = 'tester';
-        controller.password = 'tester';
+        controller = $controller('LoginController', {
+            $location: $location,
+            authService: authService,
+            localStorageService: localStorageService
+        });
+        controller.username = 'username';
+        controller.password = 'password';
         controller.login();
+        expect(authService.login).toHaveBeenCalledWith('username', 'password');
+        expect(localStorageService.get('token')).toBe(token);
         expect($location.path()).toBe('/list');
     });
 });
