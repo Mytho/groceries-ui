@@ -20,6 +20,7 @@ module.exports = function(grunt) {
             options: {
                 globalstrict: true,
                 globals: {
+                    afterEach: true,
                     angular: true,
                     beforeEach: true,
                     describe: true,
