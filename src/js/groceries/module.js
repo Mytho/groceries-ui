@@ -12,6 +12,10 @@
             controller: 'LoginController',
             controllerAs: 'vm',
             templateUrl: 'templates/login.html'
+        }).when('/logout', {
+            controller: 'LogoutController',
+            controllerAs: 'vm',
+            templateUrl: 'templates/logout.html'
         }).when('/list', {
             controller: 'ListController',
             controllerAs: 'vm',
