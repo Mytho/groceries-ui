@@ -5,9 +5,9 @@
         .module('groceries')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location', 'authService', 'localStorageService'];
+    LoginController.$inject = ['$location', 'groceriesService', 'localStorageService'];
 
-    function LoginController($location, authService, localStorageService) {
+    function LoginController($location, groceriesService, localStorageService) {
         var vm = this;
 
         vm.login = login;
@@ -23,7 +23,7 @@
         }
 
         function login() {
-            return authService.login(vm.username, vm.password)
+            return groceriesService.login(vm.username, vm.password)
                 .then(loginComplete);
 
             function loginComplete(token) {

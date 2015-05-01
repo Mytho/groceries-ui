@@ -3,11 +3,11 @@
 
     angular
         .module('groceries')
-        .service('authService', authService);
+        .service('groceriesService', groceriesService);
 
-    authService.$inject = ['$http', 'CONFIG'];
+    groceriesService.$inject = ['$http', 'CONFIG'];
 
-    function authService($http, CONFIG) {
+    function groceriesService($http, CONFIG) {
         return {
             login: login
         };

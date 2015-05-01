@@ -1,14 +1,14 @@
 'use strict';
 
 describe('LoginController', function() {
-    var $controller, $location, $httpBackend, authService, localStorageService;
+    var $controller, $location, $httpBackend, groceriesService, localStorageService;
 
     beforeEach(module('groceries'));
 
     beforeEach(inject(function($injector) {
         $controller = $injector.get('$controller');
         $location = $injector.get('$location');
-        authService = $injector.get('authService');
+        groceriesService = $injector.get('groceriesService');
         localStorageService = $injector.get('localStorageService');
     }));
 
@@ -21,7 +21,7 @@ describe('LoginController', function() {
         localStorageService.set('token', 'A-TEST-TOKEN');
         controller = $controller('LoginController', {
             $location: $location,
-            authService: authService,
+            groceriesService: groceriesService,
             localStorageService: localStorageService
         });
         expect($location.path()).toBe('/list');
@@ -30,18 +30,18 @@ describe('LoginController', function() {
     it('should store the token and redirect on a correct login', function() {
         var controller, token;
         token = 'A-Test-Token';
-        spyOn(authService, 'login').and.returnValue({
+        spyOn(groceriesService, 'login').and.returnValue({
             then: function(callback) { return callback(token); }
         });
         controller = $controller('LoginController', {
             $location: $location,
-            authService: authService,
+            groceriesService: groceriesService,
             localStorageService: localStorageService
         });
         controller.username = 'username';
         controller.password = 'password';
         controller.login();
-        expect(authService.login).toHaveBeenCalledWith('username', 'password');
+        expect(groceriesService.login).toHaveBeenCalledWith('username', 'password');
         expect(localStorageService.get('token')).toBe(token);
         expect($location.path()).toBe('/list');
     });

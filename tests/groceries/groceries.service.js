@@ -1,13 +1,13 @@
 'use strict';
 
-describe('authService', function() {
-    var $httpBackend, authService, CONFIG;
+describe('groceriesService', function() {
+    var $httpBackend, groceriesService, CONFIG;
 
     beforeEach(module('groceries'));
 
     beforeEach(inject(function($injector) {
         $httpBackend = $injector.get('$httpBackend');
-        authService = $injector.get('authService');
+        groceriesService = $injector.get('groceriesService');
         CONFIG = $injector.get('CONFIG');
     }));
 
@@ -15,7 +15,7 @@ describe('authService', function() {
         var expectedToken, responseToken;
         expectedToken = 'A-TEST-TOKEN';
         $httpBackend.whenPOST(CONFIG.backend+'/login').respond(200, {token: expectedToken});
-        authService.login('tester', 'testing').then(function(token) {
+        groceriesService.login('tester', 'testing').then(function(token) {
             responseToken = token;
         });
         $httpBackend.flush();
@@ -25,7 +25,7 @@ describe('authService', function() {
     it('should allow for catching of any errors', function() {
         var caught = false;
         $httpBackend.whenPOST(CONFIG.backend+'/login').respond(403);
-        authService.login('tester', 'testing').catch(function() {
+        groceriesService.login('tester', 'testing').catch(function() {
             caught = true;
         });
         $httpBackend.flush();
