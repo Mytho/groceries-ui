@@ -5,9 +5,19 @@
         .module('groceries')
         .controller('ListController', ListController);
 
-    ListController.$inject = [];
+    ListController.$inject = ['groceriesService'];
 
-    function ListController() {
+    function ListController(groceriesService) {
         var vm = this;
+
+        vm.items = [];
+
+        activate();
+
+        function activate() {
+            return groceriesService.items().then(function(items) {
+                vm.items = items;
+            });
+        }
     }
 })();
