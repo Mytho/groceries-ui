@@ -1,6 +1,6 @@
 'use strict';
 
-describe('LoginController', function() {
+describe('ListController', function() {
     var $controller;
 
     beforeEach(module('groceries'));
