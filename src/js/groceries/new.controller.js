@@ -12,6 +12,18 @@
 
         vm.add = add;
         vm.name = '';
+        vm.suggestions = [];
+
+        activate();
+
+        function activate() {
+            return groceriesService.suggestions()
+                .then(suggestComplete);
+
+            function suggestComplete(suggestions) {
+                vm.suggestions = suggestions;
+            }
+        }
 
         function add() {
             groceriesService.add(vm.name)

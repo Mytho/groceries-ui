@@ -11,7 +11,21 @@ describe('NewController', function() {
         groceriesService = $injector.get('groceriesService');
     }));
 
-    it('should logout', function() {
+    it('should get a list of suggestions when created', function() {
+        var controller, expectedSuggestions;
+        expectedSuggestions = {pear: 2, apples: 4, banana: 1};
+        spyOn(groceriesService, 'suggestions').and.returnValue({
+            then: function(callback) { return callback(expectedSuggestions); }
+        });
+        controller = $controller('NewController', {
+            $location: $location,
+            groceriesService: groceriesService
+        });
+        expect(groceriesService.suggestions).toHaveBeenCalled();
+        expect(controller.suggestions).toBe(expectedSuggestions);
+    });
+
+    it('should add a new item', function() {
         var controller, name;
         name = 'cucumber';
         spyOn(groceriesService, 'add').and.returnValue({
