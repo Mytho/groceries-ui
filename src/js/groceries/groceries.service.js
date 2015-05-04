@@ -12,7 +12,8 @@
             add: add,
             login: login,
             items: items,
-            toggle: toggle
+            toggle: toggle,
+            suggestions: suggestions
         };
 
         function add(name) {
@@ -61,6 +62,20 @@
 
             function itemsComplete(response) {
                 return response.data.items;
+            }
+        }
+
+        function suggestions() {
+            return $http({
+                method: 'GET',
+                url: CONFIG.backend+'/suggest',
+                headers: {'X-Auth-Token': localStorageService.get('token', '')}
+            })
+            .then(suggestionsComplete)
+            .catch(errorHandler);
+
+            function suggestionsComplete(response) {
+                return response.data.suggestions;
             }
         }
 

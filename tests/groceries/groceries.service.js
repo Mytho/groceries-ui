@@ -63,4 +63,17 @@ describe('groceriesService', function() {
         $httpBackend.flush();
         expect($location.path()).toBe('/logout');
     });
+
+    it('should provide a list of suggestions', function() {
+        var expectedSuggestions, responseSuggestions;
+        expectedSuggestions = {'apples': 3, 'bananas': 5, 'cucumber': 1};
+        $httpBackend.whenGET(CONFIG.backend+'/suggest').respond(200, {suggestions: expectedSuggestions});
+        groceriesService.suggestions().then(function(suggestions) {
+            responseSuggestions = suggestions;
+        });
+        $httpBackend.flush();
+        angular.forEach(responseSuggestions, function(count, name) {
+            expect(expectedSuggestions[name]).toBe(count);
+        });
+    });
 });
