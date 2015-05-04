@@ -37,8 +37,7 @@ button {
 	font-size: 18px;
 	font-weight: 100;
 	border: 0;
-	-webkit-box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
-	box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
+	box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
 	outline: none;
 }
 .nav {
@@ -50,8 +49,7 @@ button {
 	width: 100%;
 	height: 28px;
 	background-color: #009688;
-	-webkit-box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
-	box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
+	box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
 	color: #fff;
 	z-index: 1001;
 }
@@ -102,9 +100,9 @@ a.action-button {
 	color: #fff;
 	-webkit-border-radius: 40px 40px 40px 40px;
 	border-radius: 40px 40px 40px 40px;
-	-webkit-box-shadow: 0 2px 5px 3px rgba(181,181,181,.5);
-	box-shadow: 0 2px 5px 3px rgba(181,181,181,.5);
-	font-size: 25px;
+	box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px 0px, rgba(0, 0, 0, 0.278431) 0px 4px 8px 0px;
+	font-size: 28px;
 	text-align: center;
+	text-decoration: none;
 	line-height: 60px;
 }
