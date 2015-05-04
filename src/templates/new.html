@@ -1,13 +1,13 @@
 <div class="nav">
-	<i class="fa fa-pencil"></i>
+	<a href="#/list"><i class="fa fa-arrow-left"></i></a>
 	<span class="title">New</span>
 </div>
 <div class="content">
 	<form ng-submit="vm.add()">
 		<input type="text" placeholder="What should be bought?" ng-model="vm.input">
 	</form>
-	<div class="item" ng-repeat="suggestion in vm.suggestions | filter:{name:vm.input} | orderBy:'-count' | limitTo:20">
+	<div class="item" ng-repeat="suggestion in vm.suggestions | filter:{name:vm.input} | orderBy:'-count' | limitTo:20" ng-click="vm.add(suggestion.name)">
 		<i class="fa fa-plus"></i>
-		<span class="name" ng-click="vm.add(suggestion.name)">{{suggestion.name}}</span>
+		<span class="name">{{suggestion.name}}</span>
 	</div>
 </div>

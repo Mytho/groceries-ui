@@ -59,8 +59,10 @@ button {
 }
 .nav i.fa,
 .nav a {
-	margin-left: 12px;
 	color: #004d40;
+}
+.nav i.fa {
+	margin-left: 24px;
 }
 .content {
 	padding-top: 10px;
