@@ -12,6 +12,7 @@
             add: add,
             login: login,
             items: items,
+            remove: remove,
             toggle: toggle,
             suggestions: suggestions
         };
@@ -62,6 +63,20 @@
 
             function itemsComplete(response) {
                 return response.data.items;
+            }
+        }
+
+        function remove(item) {
+            return $http({
+                method: 'DELETE',
+                url: CONFIG.backend+'/item/'+item.id,
+                headers: {'X-Auth-Token': localStorageService.get('token', '')}
+            })
+            .then(removeComplete)
+            .catch(errorHandler);
+
+            function removeComplete(response) {
+                return response.data.status === 'ok';
             }
         }
 
