@@ -1,0 +1,52 @@
+html {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 22px;
+	color: rgb(54,54,54);
+}
+body {
+	margin: 0;
+	padding: 0;
+	background-color: rgb(250,250,250);
+}
+.nav {
+	padding-top: 16px;
+	padding-right: 16px;
+	padding-bottom: 16px;
+	padding-left: 16px;
+	background-color: #009688;
+	-webkit-box-shadow: 0 2px 1px 0px rgba(181,181,181,.3);
+	box-shadow: 0 2px 1px 0px rgba(181,181,181,.3);
+	color: #fff;
+}
+.nav span.title {
+	padding-left: 20px;
+	font-weight: 400;
+}
+.nav a {
+	color: #004d40;
+}
+.list {
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 30px;
+	padding-left: 20px;
+}
+.item {
+	padding-top: 16px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid rgb(231,231,231);
+	cursor: pointer;
+}
+.item span.name {
+	margin-left: 20px;
+}
+.item i.fa {
+	color: rgb(221,221,221);
+	font-size: 18px;
+}
+.item.strike span {
+	color: rgb(181,181,181);
+	font-weight: 100;
+	text-decoration: line-through;
+}

@@ -10,14 +10,31 @@
     function ListController(groceriesService) {
         var vm = this;
 
+        vm.toggle = toggle;
         vm.items = [];
 
         activate();
 
         function activate() {
-            return groceriesService.items().then(function(items) {
+            return groceriesService.items()
+                .then(itemsComplete);
+
+            function itemsComplete(items) {
                 vm.items = items;
-            });
+            }
+        }
+
+        function toggle(item) {
+            return groceriesService.toggle(item)
+                .then(toggleComplete);
+
+            function toggleComplete(updatedItem) {
+                var index = vm.items.indexOf(item);
+
+                if (index !== -1) {
+                    vm.items[index] = updatedItem;
+                }
+            }
         }
     }
 })();

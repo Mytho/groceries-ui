@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('groceries', ['ngRoute'])
+        .module('groceries', ['ngRoute', 'groceries.config'])
         .config(Config);
 
     Config.$inject = ['$routeProvider'];
