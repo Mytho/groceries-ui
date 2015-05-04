@@ -12,6 +12,17 @@ describe('groceriesService', function() {
         CONFIG = $injector.get('CONFIG');
     }));
 
+    it('should add an item', function() {
+        var name, responseItem;
+        name = 'avocado';
+        $httpBackend.whenPOST(CONFIG.backend+'/item').respond(200, {name: name});
+        groceriesService.add(name).then(function(item) {
+            responseItem = item;
+        });
+        $httpBackend.flush();
+        expect(responseItem.name).toBe(name);
+    });
+
     it('should login and get a token', function() {
         var expectedToken, responseToken;
         expectedToken = 'A-TEST-TOKEN';

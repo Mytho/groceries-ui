@@ -5,18 +5,35 @@
         .module('groceries')
         .service('groceriesService', groceriesService);
 
-    groceriesService.$inject = ['$location', '$http', 'localStorageService', 'CONFIG'];
+    groceriesService.$inject = ['$location', '$http', '$q', 'localStorageService', 'CONFIG'];
 
-    function groceriesService($location, $http, localStorageService, CONFIG) {
+    function groceriesService($location, $http, $q, localStorageService, CONFIG) {
         return {
+            add: add,
             login: login,
             items: items,
             toggle: toggle
         };
 
+        function add(name) {
+            return $http({
+                method: 'POST',
+                url: CONFIG.backend+'/item',
+                headers: {'X-Auth-Token': localStorageService.get('token', '')},
+                data: {name: name}
+            })
+            .then(addComplete)
+            .catch(errorHandler);
+
+            function addComplete(response) {
+                return response.data;
+            }
+        }
+
         function errorHandler(response) {
             if (response.status == 403) {
                 $location.path('/logout');
+                return $q.reject('Forbidden');
             }
         }
 
