@@ -37,18 +37,21 @@ button {
 	font-size: 18px;
 	font-weight: 100;
 	border: 0;
-	-webkit-box-shadow: 0 2px 1px 0px rgba(181,181,181,.3);
-	box-shadow: 0 2px 1px 0px rgba(181,181,181,.3);
+	-webkit-box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
+	box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
 	outline: none;
 }
 .nav {
+	position: absolute;
+	top: 0;
+	left: 0;
 	padding-top: 16px;
-	padding-right: 16px;
 	padding-bottom: 16px;
-	padding-left: 16px;
+	width: 100%;
+	height: 28px;
 	background-color: #009688;
-	-webkit-box-shadow: 0 2px 1px 0px rgba(181,181,181,.3);
-	box-shadow: 0 2px 1px 0px rgba(181,181,181,.3);
+	-webkit-box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
+	box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
 	color: #fff;
 }
 .nav span.title {
@@ -57,13 +60,15 @@ button {
 }
 .nav i.fa,
 .nav a {
+	margin-left: 12px;
 	color: #004d40;
 }
 .content {
 	padding-top: 10px;
-	padding-right: 20px;
+	padding-right: 28px;
 	padding-bottom: 30px;
-	padding-left: 20px;
+	padding-left: 28px;
+	margin-top: 60px;
 }
 .item {
 	padding-top: 16px;
@@ -85,4 +90,20 @@ button {
 	color: rgb(181,181,181);
 	font-weight: 100;
 	text-decoration: line-through;
+}
+a.action-button {
+	position: absolute;
+	bottom: 25px;
+	right: 25px;
+	width: 60px;
+	height: 60px;
+	background-color: #ff1744;
+	color: #fff;
+	-webkit-border-radius: 40px 40px 40px 40px;
+	border-radius: 40px 40px 40px 40px;
+	-webkit-box-shadow: 0 2px 5px 3px rgba(181,181,181,.5);
+	box-shadow: 0 2px 5px 3px rgba(181,181,181,.5);
+	font-size: 26px;
+	text-align: center;
+	line-height: 60px;
 }
