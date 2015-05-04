@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('groceries', ['ngRoute'])
+        .module('groceries', ['ngRoute', 'groceries.config'])
         .config(Config);
 
     Config.$inject = ['$routeProvider'];
@@ -20,6 +20,14 @@
             controller: 'ListController',
             controllerAs: 'vm',
             templateUrl: 'templates/list.html'
+        }).when('/menu', {
+            controller: 'MenuController',
+            controllerAs: 'vm',
+            templateUrl: 'templates/menu.html'
+        }).when('/new', {
+            controller: 'NewController',
+            controllerAs: 'vm',
+            templateUrl: 'templates/new.html'
         }).otherwise({
             redirectTo: '/login'
         });

@@ -17,6 +17,12 @@ module.exports = function(grunt) {
                 dest: 'build/groceries.js'
             }
         },
+        cssmin: {
+            groceries: {
+                src: ['src/css/groceries.css'],
+                dest: 'src/css/groceries.min.css'
+            }
+        },
         jshint: {
             options: {
                 globalstrict: true,
@@ -42,6 +48,35 @@ module.exports = function(grunt) {
                 singleRun: false
             }
         },
+        ngconstant: {
+            options: {
+                wrap: '(function(){\n\'use strict\';\n\n{%= __ngModule %}\n\n})();',
+                name: 'groceries.config',
+                dest: 'src/js/groceries/config.js'
+            },
+            production: {
+                constants: {
+                    CONFIG: {
+                        backend: 'https://groceries-api.herokuapp.com'
+                    }
+                }
+            },
+            development: {
+                constants: {
+                    CONFIG: {
+                        backend: 'http://zengerink.com:8002'
+                    }
+                }
+            }
+        },
+        shell: {
+            options: {
+                stderr: false
+            },
+            httpd: {
+                command: 'python -m http.server 8001'
+            }
+        },
         uglify: {
             options: {
                 banner: '/*! Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> */\n'
@@ -56,17 +91,28 @@ module.exports = function(grunt) {
             js: {
                 files: ['Gruntfile.js', 'karma.conf.js', 'tests/**/*.js', 'src/js/groceries/**/*.js'],
                 tasks: ['jshint', 'concat', 'uglify']
+            },
+            css: {
+                files: ['src/css/groceries.css'],
+                tasks: ['cssmin']
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-ng-constant');
+    grunt.loadNpmTasks('grunt-shell');
 
     grunt.registerTask('build', function() {
-        grunt.task.run(['jshint', 'concat', 'uglify']);
+        grunt.task.run(['ngconstant:production', 'jshint', 'concat', 'uglify']);
+    });
+
+    grunt.registerTask('httpd', function() {
+        grunt.task.run(['ngconstant:development', 'jshint', 'concat', 'uglify', 'shell:httpd']);
     });
 };

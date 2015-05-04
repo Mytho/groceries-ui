@@ -1,3 +1,11 @@
-<input type="text" ng-model="vm.username">
-<input type="password" ng-model="vm.password">
-<button ng-click="vm.login()">Log in</button>
+<div class="nav">
+	<i class="fa fa-user"></i>
+	<span class="title">Login</span>
+</div>
+<div class="content">
+	<form ng-submit="vm.login()">
+		<input type="text" ng-model="vm.username" placeholder="Username">
+		<input type="password" ng-model="vm.password" placeholder="Password">
+		<button ng-click="vm.login()">LOG IN</button>
+	</form>
+</div>
