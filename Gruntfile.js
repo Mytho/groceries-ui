@@ -11,6 +11,7 @@ module.exports = function(grunt) {
                 src: [
                     'src/js/groceries/module.js',
                     'src/js/groceries/config.js',
+                    'src/js/groceries/*.directive.js',
                     'src/js/groceries/*.service.js',
                     'src/js/groceries/*.controller.js'
                 ],
