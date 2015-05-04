@@ -16,6 +16,10 @@
             controller: 'LogoutController',
             controllerAs: 'vm',
             templateUrl: 'templates/logout.html'
+        }).when('/menu', {
+            controller: 'MenuController',
+            controllerAs: 'vm',
+            templateUrl: 'templates/menu.html'
         }).when('/list', {
             controller: 'ListController',
             controllerAs: 'vm',
