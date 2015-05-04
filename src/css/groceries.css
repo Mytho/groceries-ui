@@ -42,7 +42,7 @@ button {
 	outline: none;
 }
 .nav {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	padding-top: 16px;
@@ -53,6 +53,7 @@ button {
 	-webkit-box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
 	box-shadow: 0 2px 1px 1px rgba(181,181,181,.5);
 	color: #fff;
+	z-index: 1001;
 }
 .nav span.title {
 	padding-left: 20px;
@@ -92,7 +93,7 @@ button {
 	text-decoration: line-through;
 }
 a.action-button {
-	position: absolute;
+	position: fixed;
 	bottom: 25px;
 	right: 25px;
 	width: 60px;
