@@ -1,1 +1,11 @@
-<div ng-repeat="item in vm.items" ng-click="vm.toggle(item)" ng-class="{strike: item.is_bought}">{{item.name}}</div>
+<div class="nav">
+	<a href="#/menu"><i class="fa fa-bars"></i></a>
+	<span class="title">List</span>
+</div>
+<div class="list">
+	<div class="item" ng-repeat="item in vm.items" ng-click="vm.toggle(item)" ng-class="{strike:item.is_bought}">
+		<i class="fa fa-square-o" ng-show="!item.is_bought"></i>
+		<i class="fa fa-check-square-o" ng-show="item.is_bought"></i>
+		<span class="name">{{item.name}}</span>
+	</div>
+</div>
