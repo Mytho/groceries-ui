@@ -12,6 +12,17 @@ describe('groceriesService', function() {
         CONFIG = $injector.get('CONFIG');
     }));
 
+    it('should add an item', function() {
+        var name, responseItem;
+        name = 'avocado';
+        $httpBackend.whenPOST(CONFIG.backend+'/item').respond(200, {name: name});
+        groceriesService.add(name).then(function(item) {
+            responseItem = item;
+        });
+        $httpBackend.flush();
+        expect(responseItem.name).toBe(name);
+    });
+
     it('should login and get a token', function() {
         var expectedToken, responseToken;
         expectedToken = 'A-TEST-TOKEN';
@@ -51,5 +62,18 @@ describe('groceriesService', function() {
         groceriesService.items();
         $httpBackend.flush();
         expect($location.path()).toBe('/logout');
+    });
+
+    it('should provide a list of suggestions', function() {
+        var expectedSuggestions, responseSuggestions;
+        expectedSuggestions = {'apples': 3, 'bananas': 5, 'cucumber': 1};
+        $httpBackend.whenGET(CONFIG.backend+'/suggest').respond(200, {suggestions: expectedSuggestions});
+        groceriesService.suggestions().then(function(suggestions) {
+            responseSuggestions = suggestions;
+        });
+        $httpBackend.flush();
+        angular.forEach(responseSuggestions, function(count, name) {
+            expect(expectedSuggestions[name]).toBe(count);
+        });
     });
 });

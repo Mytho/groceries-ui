@@ -16,14 +16,18 @@
             controller: 'LogoutController',
             controllerAs: 'vm',
             templateUrl: 'templates/logout.html'
-        }).when('/menu', {
-            controller: 'MenuController',
-            controllerAs: 'vm',
-            templateUrl: 'templates/menu.html'
         }).when('/list', {
             controller: 'ListController',
             controllerAs: 'vm',
             templateUrl: 'templates/list.html'
+        }).when('/menu', {
+            controller: 'MenuController',
+            controllerAs: 'vm',
+            templateUrl: 'templates/menu.html'
+        }).when('/new', {
+            controller: 'NewController',
+            controllerAs: 'vm',
+            templateUrl: 'templates/new.html'
         }).otherwise({
             redirectTo: '/login'
         });
