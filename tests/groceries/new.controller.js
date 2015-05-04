@@ -26,18 +26,18 @@ describe('NewController', function() {
     });
 
     it('should add a new item', function() {
-        var controller, name;
-        name = 'cucumber';
+        var controller, input;
+        input = 'cucumber';
         spyOn(groceriesService, 'add').and.returnValue({
-            then: function(callback) { return callback({name: name}); }
+            then: function(callback) { return callback({name: input}); }
         });
         controller = $controller('NewController', {
             $location: $location,
             groceriesService: groceriesService
         });
-        controller.name = name;
+        controller.input = input;
         controller.add();
-        expect(groceriesService.add).toHaveBeenCalledWith(name);
+        expect(groceriesService.add).toHaveBeenCalledWith(input);
         expect($location.path()).toBe('/list');
     });
 });

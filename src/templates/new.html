@@ -1,9 +1,12 @@
 <div class="nav">
-	<i class="fa fa-user"></i>
-	<span class="title">Login</span>
+	<i class="fa fa-pencil"></i>
+	<span class="title">New</span>
 </div>
 <div class="content">
 	<form ng-submit="vm.add()">
-		<input type="text" ng-model="vm.name" placeholder="What should be bought?">
+		<input type="text" placeholder="What should be bought?" ng-model="vm.input">
 	</form>
+	<div class="item" ng-repeat="suggestion in vm.suggestions | filter:{name:vm.input} | orderBy:'-count'">
+		<span class="name" ng-click="vm.add(suggestion.name)">{{suggestion.name}}</span>
+	</div>
 </div>

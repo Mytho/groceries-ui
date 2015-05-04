@@ -11,7 +11,7 @@
         var vm = this;
 
         vm.add = add;
-        vm.name = '';
+        vm.input = '';
         vm.suggestions = [];
 
         activate();
@@ -25,8 +25,8 @@
             }
         }
 
-        function add() {
-            groceriesService.add(vm.name)
+        function add(name) {
+            groceriesService.add(name || vm.input)
                 .then(addComplete);
 
             function addComplete() {
