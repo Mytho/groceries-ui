@@ -74,9 +74,13 @@ button {
 	padding-left: 16px;
 	margin-top: 60px;
 }
-.item {
+.item,
+.swipe-inner,
+.swipe-undo {
 	padding-top: 16px;
 	padding-bottom: 16px;
+}
+.item {
 	border-bottom: 1px solid rgb(231,231,231);
 	cursor: pointer;
 }
@@ -116,6 +120,7 @@ a.action-button {
 	z-index: 1001;
 }
 .swipe-outer {
+	padding: 0;
 	position: relative;
 	overflow: hidden;
 }
@@ -126,8 +131,6 @@ a.action-button {
 	background-color: #fafafa;
 }
 .swipe-undo {
-	z-index: 101;
-	width: 100%;
 	background-color: #ff1744;
 }
 .swipe-undo i.fa {
@@ -136,7 +139,7 @@ a.action-button {
 }
 .swipe-undo span.name {
 	float: right;
-	margin-top: 3px;
+	margin-top: 1px;
 	color: #fff;
 	font-size: 20px;
 }

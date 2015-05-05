@@ -9,16 +9,13 @@
 
     function swipeDelete($swipe, $timeout, groceriesService) {
         return {
-            link: {
-                pre: pre,
-                post: post
-            },
+            link: link,
             scope: {
                 item: '=swipeDelete'
             },
-            template: '<div class="swipe-outer" ng-style="styles.outer">'+
-                        '<div class="swipe-inner" ng-style="styles.inner" ng-transclude></div>'+
-                        '<div class="swipe-undo" ng-style="styles.undo" ng-click="undo($event)">'+
+            template: '<div class="swipe-outer">'+
+                        '<div class="swipe-inner" ng-transclude></div>'+
+                        '<div class="swipe-undo" ng-click="undo($event)">'+
                           '<i class="fa fa-trash"></i>'+
                           '<span class="name">UNDO</span>'+
                         '</div>'+
@@ -28,32 +25,11 @@
             restrict: 'A'
         };
 
-        function pre(scope, elem, attrs) {
-            elem.data('origHeight', elem.outerHeight());
-            elem.data('origPaddingTop', elem.css('padding-top'));
-        }
-
-        function post(scope, elem, attrs) {
+        function link(scope, elem, attrs) {
             var FULL_SWIPE_THRESHOLD, REMOVE_DELAY, isFinished, startCoords, t;
 
             FULL_SWIPE_THRESHOLD = 0.65;
             REMOVE_DELAY = 1500;
-
-            scope.styles = {
-                outer: {
-                    padding: 0,
-                    height: elem.data('origHeight')
-                },
-                inner: {
-                    'padding-top': elem.data('origPaddingTop'),
-                    height: elem.data('origHeight')
-                },
-                undo: {
-                    position: 'absolute',
-                    'padding-top': elem.data('origPaddingTop'),
-                    height: elem.data('origHeight')
-                }
-            };
 
             scope.undo = undo;
 
