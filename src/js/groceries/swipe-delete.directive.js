@@ -18,7 +18,7 @@
             },
             template: '<div class="swipe-outer" ng-style="styles.outer">'+
                         '<div class="swipe-inner" ng-style="styles.inner" ng-transclude></div>'+
-                        '<div class="swipe-undo" ng-style="styles.undo" ng-click="undo()">'+
+                        '<div class="swipe-undo" ng-style="styles.undo" ng-click="undo($event)">'+
                           '<i class="fa fa-trash"></i>'+
                           '<span class="name">UNDO</span>'+
                         '</div>'+
@@ -34,6 +34,11 @@
         }
 
         function post(scope, elem, attrs) {
+            scope.FULL_SWIPE_THRESHOLD = 0.65;
+            scope.REMOVE_DELAY = 1500;
+
+            scope.undo = undo;
+
             scope.styles = {
                 outer: {
                     padding: 0,
@@ -50,8 +55,6 @@
                 }
             };
 
-            scope.undo = undo;
-
             $swipe.bind(elem, {
                 start: start,
                 move: move,
@@ -63,7 +66,7 @@
                     return position(0);
                 }
 
-                scope.t = $timeout(remove, 1500);
+                scope.t = $timeout(remove, scope.REMOVE_DELAY);
             }
 
             function move(coords) {
@@ -71,7 +74,7 @@
                     return position(0);
                 }
 
-                if (elem.find('.swipe-inner').offset().left > elem.find('.swipe-inner').outerWidth() / 2) {
+                if (elem.find('.swipe-inner').offset().left > elem.find('.swipe-inner').outerWidth() * scope.FULL_SWIPE_THRESHOLD) {
                     scope.isFinished = true;
                     return position(elem.find('.swipe-inner').outerWidth());
                 }
@@ -79,7 +82,8 @@
                 position(coords.x - scope.startCoords.x, true);
             }
 
-            function undo() {
+            function undo($event) {
+                $event.stopPropagation();
                 $timeout.cancel(scope.t);
                 position(0);
             }

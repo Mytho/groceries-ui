@@ -3,8 +3,7 @@
 	<span class="title">List</span>
 </div>
 <div class="content">
-	<!-- ng-click="vm.toggle(item)" -->
-	<div class="item" ng-repeat="item in vm.items" ng-class="{strike:item.is_bought}" swipe-delete="item">
+	<div class="item" ng-repeat="item in vm.items" ng-class="{strike:item.is_bought}" ng-click="vm.toggle(item)" swipe-delete="item">
 		<i class="fa fa-square-o" ng-show="!item.is_bought"></i>
 		<i class="fa fa-check-square-o" ng-show="item.is_bought"></i>
 		<span class="name">{{item.name}}</span>
