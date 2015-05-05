@@ -102,23 +102,6 @@ button {
 	font-style: italic;
 	text-decoration: line-through;
 }
-a.action-button {
-	position: fixed;
-	bottom: 25px;
-	right: 25px;
-	width: 60px;
-	height: 60px;
-	background-color: #ff1744;
-	color: #fff;
-	-webkit-border-radius: 40px 40px 40px 40px;
-	border-radius: 40px 40px 40px 40px;
-	box-shadow: rgba(0,0,0,.137255) 0 0 4px 0, rgba(0,0,0,.278431) 0 4px 8px 0;
-	font-size: 28px;
-	text-align: center;
-	text-decoration: none;
-	line-height: 60px;
-	z-index: 1001;
-}
 .swipe-outer {
 	padding: 0;
 	position: relative;
@@ -146,4 +129,21 @@ a.action-button {
 	color: #fff;
 	font-style: normal;
 	text-decoration: none;
+}
+a.action-button {
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
+	width: 60px;
+	height: 60px;
+	background-color: #ff1744;
+	color: #fff;
+	-webkit-border-radius: 40px 40px 40px 40px;
+	border-radius: 40px 40px 40px 40px;
+	box-shadow: rgba(0,0,0,.137255) 0 0 4px 0, rgba(0,0,0,.278431) 0 4px 8px 0;
+	font-size: 28px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 60px;
+	z-index: 1001;
 }

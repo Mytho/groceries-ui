@@ -13,7 +13,8 @@
                 post: post
             },
             scope: {
-                item: '=swipeDelete'
+                item: '=swipeDeleteItem',
+                items: '=swipeDeleteItems'
             },
             template: '<div class="swipe-outer">'+
                         '<div class="swipe-inner" ng-transclude></div>'+
@@ -83,6 +84,7 @@
                     .catch(removeFailed);
 
                 function removeComplete() {
+                    scope.items.splice(scope.items.indexOf(scope.item), 1);
                     elem.remove();
                 }
 
