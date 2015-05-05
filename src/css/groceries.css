@@ -6,7 +6,10 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	background-color: rgb(250,250,250);
+	background-color: #fafafa;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
 }
 input {
 	box-sizing: border-box;
@@ -16,12 +19,12 @@ input {
 	padding-left: 10px;
 	margin-top: 12px;
 	width: 100%;
-	border: 1px solid rgb(221,221,221);
+	border: 1px solid #ddd;
 	font-size: 22px;
 	outline: none;
 }
 ::-webkit-input-placeholder {
-	color: rgb(181,181,181);
+	color: #b5b5b5;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 100;
 }
@@ -37,7 +40,7 @@ button {
 	font-size: 18px;
 	font-weight: 100;
 	border: 0;
-	box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
+	box-shadow: rgba(0,0,0,.258824) 0 2px 5px 0;
 	outline: none;
 }
 .nav {
@@ -49,7 +52,7 @@ button {
 	width: 100%;
 	height: 28px;
 	background-color: #009688;
-	box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
+	box-shadow: rgba(0,0,0,.258824) 0 2px 5px 0;
 	color: #fff;
 	z-index: 1001;
 }
@@ -66,30 +69,37 @@ button {
 }
 .content {
 	padding-top: 10px;
-	padding-right: 28px;
-	padding-bottom: 30px;
-	padding-left: 28px;
+	padding-right: 16px;
+	padding-bottom: 75px;
+	padding-left: 16px;
 	margin-top: 60px;
 }
-.item {
+.item,
+.swipe-inner,
+.swipe-undo {
 	padding-top: 16px;
 	padding-bottom: 16px;
-	border-bottom: 1px solid rgb(231,231,231);
+}
+.item {
+	border-bottom: 1px solid #e7e7e7;
 	cursor: pointer;
 }
 .item a,
 .item span.name {
 	margin-left: 20px;
-	color: rgb(54,54,54);
+	margin-right: 20px;
+	color: #363636;
 	text-decoration: none;
+	word-wrap: break-word;
 }
 .item i.fa {
-	color: rgb(221,221,221);
-	font-size: 18px;
+	margin-left: 12px;
+	color: #ddd;
 }
 .item.strike span {
-	color: rgb(181,181,181);
+	color: #b5b5b5;
 	font-weight: 100;
+	font-style: italic;
 	text-decoration: line-through;
 }
 a.action-button {
@@ -102,9 +112,36 @@ a.action-button {
 	color: #fff;
 	-webkit-border-radius: 40px 40px 40px 40px;
 	border-radius: 40px 40px 40px 40px;
-	box-shadow: rgba(0, 0, 0, 0.137255) 0px 0px 4px 0px, rgba(0, 0, 0, 0.278431) 0px 4px 8px 0px;
+	box-shadow: rgba(0,0,0,.137255) 0 0 4px 0, rgba(0,0,0,.278431) 0 4px 8px 0;
 	font-size: 28px;
 	text-align: center;
 	text-decoration: none;
 	line-height: 60px;
+	z-index: 1001;
+}
+.swipe-outer {
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
+.swipe-inner {
+	position: absolute;
+	z-index: 102;
+	width: 100%;
+	background-color: #fafafa;
+}
+.swipe-undo {
+	background-color: #ff1744;
+}
+.swipe-undo i.fa {
+	color: #fff;
+}
+.swipe-undo span.name {
+	color: #ff1744;
+}
+.swipe-undo span.label {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	color: #fff;
 }

@@ -76,4 +76,15 @@ describe('groceriesService', function() {
             expect(expectedSuggestions[name]).toBe(count);
         });
     });
+
+    it('should remove an item', function() {
+        var item, isResponseSuccesful;
+        item = {id: 14, name: 'apples'};
+        $httpBackend.whenDELETE(CONFIG.backend+'/item/'+item.id).respond(200, {status: 'ok'});
+        groceriesService.remove(item).then(function(isSuccessful) {
+            isResponseSuccesful = isSuccessful;
+        });
+        $httpBackend.flush();
+        expect(isResponseSuccesful).toBe(true);
+    });
 });
