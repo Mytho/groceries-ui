@@ -6,7 +6,7 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	background-color: rgb(250,250,250);
+	background-color: #fafafa;
 }
 input {
 	box-sizing: border-box;
@@ -66,9 +66,9 @@ button {
 }
 .content {
 	padding-top: 10px;
-	padding-right: 28px;
+	padding-right: 16px;
 	padding-bottom: 30px;
-	padding-left: 28px;
+	padding-left: 16px;
 	margin-top: 60px;
 }
 .item {
@@ -84,12 +84,14 @@ button {
 	text-decoration: none;
 }
 .item i.fa {
+	margin-left: 12px;
 	color: rgb(221,221,221);
 	font-size: 18px;
 }
 .item.strike span {
 	color: rgb(181,181,181);
 	font-weight: 100;
+	font-style: italic;
 	text-decoration: line-through;
 }
 a.action-button {
@@ -107,4 +109,24 @@ a.action-button {
 	text-align: center;
 	text-decoration: none;
 	line-height: 60px;
+	z-index: 1001;
+}
+.swipe-outer {
+	position: relative;
+	overflow: hidden;
+}
+.swipe-inner {
+	position: absolute;
+	z-index: 102;
+	width: 100%;
+	background-color: #fafafa;
+}
+.swipe-cancel {
+	z-index: 101;
+	width: 100%;
+	background-color: #ff1744;
+}
+.swipe-cancel i.fa {
+	color: #fff;
+	font-size: 22px;
 }
