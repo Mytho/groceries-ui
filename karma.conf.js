@@ -6,6 +6,7 @@ module.exports = function(config) {
         frameworks: ['jasmine'],
         singleRun: true,
         files: [
+            'https://code.jquery.com/jquery-1.11.3.min.js',
             'https://code.angularjs.org/1.3.15/angular.js',
             'https://code.angularjs.org/1.3.15/angular-route.js',
             'https://code.angularjs.org/1.3.15/angular-touch.js',
