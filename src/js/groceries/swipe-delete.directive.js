@@ -5,9 +5,9 @@
         .module('groceries')
         .directive('swipeDelete', swipeDelete);
 
-    swipeDelete.$inject = ['$swipe', '$timeout'];
+    swipeDelete.$inject = ['$swipe', '$timeout', 'groceriesService'];
 
-    function swipeDelete($swipe, $timeout) {
+    function swipeDelete($swipe, $timeout, groceriesService) {
         return {
             link: {
                 pre: pre,
@@ -80,14 +80,22 @@
             }
 
             function undo() {
-                window.console.log('Canceled!');
                 $timeout.cancel(scope.t);
                 position(0);
             }
 
             function remove() {
-                window.console.log('Removing '+scope.item.name);
-                elem.remove();
+                return groceriesService.remove(scope.item)
+                    .then(removeComplete)
+                    .catch(removeFailed);
+
+                function removeComplete() {
+                    elem.remove();
+                }
+
+                function removeFailed() {
+                    position(0);
+                }
             }
 
             function position(x, isInstant) {
