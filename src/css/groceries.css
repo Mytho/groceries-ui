@@ -83,6 +83,7 @@ button {
 .item a,
 .item span.name {
 	margin-left: 20px;
+	margin-right: 20px;
 	color: rgb(54,54,54);
 	text-decoration: none;
 }
@@ -124,12 +125,18 @@ a.action-button {
 	width: 100%;
 	background-color: #fafafa;
 }
-.swipe-cancel {
+.swipe-undo {
 	z-index: 101;
 	width: 100%;
 	background-color: #ff1744;
 }
-.swipe-cancel i.fa {
+.swipe-undo i.fa {
 	color: #fff;
 	font-size: 22px;
+}
+.swipe-undo a {
+	float: right;
+	margin-top: 3px;
+	color: #fff;
+	font-size: 20px;
 }

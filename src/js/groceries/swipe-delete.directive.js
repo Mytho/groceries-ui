@@ -5,9 +5,9 @@
         .module('groceries')
         .directive('swipeDelete', swipeDelete);
 
-    swipeDelete.$inject = ['$swipe'];
+    swipeDelete.$inject = ['$swipe', '$timeout'];
 
-    function swipeDelete($swipe) {
+    function swipeDelete($swipe, $timeout) {
         return {
             link: {
                 pre: pre,
@@ -18,8 +18,9 @@
             },
             template: '<div class="swipe-outer" ng-style="styles.outer">'+
                         '<div class="swipe-inner" ng-style="styles.inner" ng-transclude></div>'+
-                        '<div class="swipe-cancel" ng-style="styles.cancel">'+
+                        '<div class="swipe-undo" ng-style="styles.undo">'+
                           '<i class="fa fa-trash"></i>'+
+                          '<a ng-click="undo()">UNDO</a>'+
                         '</div>'+
                       '</div>',
             transclude: true,
@@ -33,8 +34,6 @@
         }
 
         function post(scope, elem, attrs) {
-            var isFinished, startCoords;
-
             scope.styles = {
                 outer: {
                     padding: 0,
@@ -44,41 +43,51 @@
                     'padding-top': elem.data('origPaddingTop'),
                     height: elem.data('origHeight')
                 },
-                cancel: {
+                undo: {
                     position: 'absolute',
                     'padding-top': elem.data('origPaddingTop'),
                     height: elem.data('origHeight')
                 }
             };
 
+            scope.undo = undo;
+
             $swipe.bind(elem, {
                 start: start,
                 move: move,
-                end: end,
-                cancel: cancel
+                end: end
             });
 
-            function cancel(coords) {
-                // ..
-            }
-
             function end(coords) {
-                if ( ! isFinished) {
-                    position(0);
+                if ( ! scope.isFinished) {
+                    return position(0);
                 }
+
+                scope.t = $timeout(remove, 1500);
             }
 
             function move(coords) {
-                if (coords.x - startCoords.x < 0) {
+                if (coords.x - scope.startCoords.x < 0) {
                     return position(0);
                 }
 
                 if (elem.find('.swipe-inner').offset().left > elem.find('.swipe-inner').outerWidth() / 2) {
-                    isFinished = true;
+                    scope.isFinished = true;
                     return position(elem.find('.swipe-inner').outerWidth());
                 }
 
-                position(coords.x - startCoords.x, true);
+                position(coords.x - scope.startCoords.x, true);
+            }
+
+            function undo() {
+                window.console.log('Canceled!');
+                $timeout.cancel(scope.t);
+                position(0);
+            }
+
+            function remove() {
+                window.console.log('Removing '+scope.item.name);
+                elem.remove();
             }
 
             function position(x, isInstant) {
@@ -90,8 +99,8 @@
             }
 
             function start(coords) {
-                isFinished = false;
-                startCoords = coords;
+                scope.isFinished = false;
+                scope.startCoords = coords;
             }
         }
     }
