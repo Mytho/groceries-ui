@@ -18,9 +18,9 @@
             },
             template: '<div class="swipe-outer" ng-style="styles.outer">'+
                         '<div class="swipe-inner" ng-style="styles.inner" ng-transclude></div>'+
-                        '<div class="swipe-undo" ng-style="styles.undo">'+
+                        '<div class="swipe-undo" ng-style="styles.undo" ng-click="undo()">'+
                           '<i class="fa fa-trash"></i>'+
-                          '<a ng-click="undo()">UNDO</a>'+
+                          '<span class="name">UNDO</span>'+
                         '</div>'+
                       '</div>',
             transclude: true,

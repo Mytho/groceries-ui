@@ -134,7 +134,7 @@ a.action-button {
 	color: #fff;
 	font-size: 22px;
 }
-.swipe-undo a {
+.swipe-undo span.name {
 	float: right;
 	margin-top: 3px;
 	color: #fff;
