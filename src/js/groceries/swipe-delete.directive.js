@@ -33,7 +33,7 @@
         }
 
         function post(scope, elem, attrs) {
-            var isEnded, startCoords;
+            var isFinished, startCoords;
 
             scope.styles = {
                 outer: {
@@ -63,17 +63,19 @@
             }
 
             function end(coords) {
-                position(0);
+                if ( ! isFinished) {
+                    position(0);
+                }
             }
 
             function move(coords) {
                 if (coords.x - startCoords.x < 0) {
-                    return end();
+                    return position(0);
                 }
 
                 if (elem.find('.swipe-inner').offset().left > elem.find('.swipe-inner').outerWidth() / 2) {
-                    position(elem.find('.swipe-inner').outerWidth());
-                    return;
+                    isFinished = true;
+                    return position(elem.find('.swipe-inner').outerWidth());
                 }
 
                 position(coords.x - startCoords.x, true);
@@ -88,6 +90,7 @@
             }
 
             function start(coords) {
+                isFinished = false;
                 startCoords = coords;
             }
         }
