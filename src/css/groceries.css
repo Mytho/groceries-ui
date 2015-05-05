@@ -96,7 +96,7 @@ button {
 	margin-left: 12px;
 	color: #ddd;
 }
-.item.strike span {
+.item.strike span.name {
 	color: #b5b5b5;
 	font-weight: 100;
 	font-style: italic;
