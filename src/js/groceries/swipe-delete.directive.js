@@ -88,6 +88,14 @@
                 position(0);
             }
 
+            function position(x, isInstant) {
+                if (isInstant) {
+                    return elem.find('.swipe-inner').css('left', x);
+                }
+
+                elem.find('.swipe-inner').animate({left: x}, 200);
+            }
+
             function remove() {
                 return groceriesService.remove(scope.item)
                     .then(removeComplete)
@@ -100,14 +108,6 @@
                 function removeFailed() {
                     position(0);
                 }
-            }
-
-            function position(x, isInstant) {
-                if (isInstant) {
-                    return elem.find('.swipe-inner').css('left', x);
-                }
-
-                elem.find('.swipe-inner').animate({left: x}, 200);
             }
 
             function start(coords) {
