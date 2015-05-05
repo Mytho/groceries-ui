@@ -96,7 +96,7 @@ button {
 	margin-left: 12px;
 	color: #ddd;
 }
-.item.strike span.name {
+.item.strike span {
 	color: #b5b5b5;
 	font-weight: 100;
 	font-style: italic;
@@ -144,4 +144,6 @@ a.action-button {
 	top: 16px;
 	right: 16px;
 	color: #fff;
+	font-style: normal;
+	text-decoration: none;
 }
