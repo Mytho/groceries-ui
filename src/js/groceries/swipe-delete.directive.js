@@ -9,7 +9,9 @@
 
     function swipeDelete($swipe, $timeout, groceriesService) {
         return {
-            link: link,
+            link: {
+                post: post
+            },
             scope: {
                 item: '=swipeDelete'
             },
@@ -17,7 +19,8 @@
                         '<div class="swipe-inner" ng-transclude></div>'+
                         '<div class="swipe-undo" ng-click="undo($event)">'+
                           '<i class="fa fa-trash"></i>'+
-                          '<span class="name">UNDO</span>'+
+                          '<span class="name">{{item.name}}</span>'+
+                          '<span class="label">UNDO</span>'+
                         '</div>'+
                       '</div>',
             transclude: true,
@@ -25,7 +28,7 @@
             restrict: 'A'
         };
 
-        function link(scope, elem, attrs) {
+        function post(scope, elem, attrs) {
             var FULL_SWIPE_THRESHOLD, REMOVE_DELAY, isFinished, startCoords, t;
 
             FULL_SWIPE_THRESHOLD = 0.65;
