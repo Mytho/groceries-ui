@@ -7,7 +7,7 @@
 		<i class="fa fa-shopping-cart"></i>
 		<span class="name">Empty</span>
 	</div>
-	<div class="item" ng-repeat="item in vm.items" ng-class="{strike:item.is_bought}" ng-click="vm.toggle(item)" swipe-delete="item">
+	<div class="item" ng-repeat="item in vm.items" ng-class="{strike:item.is_bought}" ng-click="vm.toggle(item)" swipe-delete swipe-delete-item="item" swipe-delete-items="vm.items">
 		<i class="fa fa-square-o" ng-show="!item.is_bought"></i>
 		<i class="fa fa-check-square-o" ng-show="item.is_bought"></i>
 		<span class="name">{{item.name}}</span>
