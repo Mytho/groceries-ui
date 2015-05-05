@@ -33,7 +33,7 @@
         }
 
         function post(scope, elem, attrs) {
-            var startCoords;
+            var isEnded, startCoords;
 
             scope.styles = {
                 outer: {
@@ -59,20 +59,32 @@
             });
 
             function cancel(coords) {
-
+                // ..
             }
 
             function end(coords) {
-
+                position(0);
             }
 
             function move(coords) {
-                position(coords.x - startCoords.x);
+                if (coords.x - startCoords.x < 0) {
+                    return end();
+                }
+
+                if (elem.find('.swipe-inner').offset().left > elem.find('.swipe-inner').outerWidth() / 2) {
+                    position(elem.find('.swipe-inner').outerWidth());
+                    return;
+                }
+
+                position(coords.x - startCoords.x, true);
             }
 
-            function position(x) {
-                elem.find('.swipe-inner').css('left', x);
-                window.console.log('position', x);
+            function position(x, isInstant) {
+                if (isInstant) {
+                    return elem.find('.swipe-inner').css('left', x);
+                }
+
+                elem.find('.swipe-inner').animate({left: x}, 200);
             }
 
             function start(coords) {
