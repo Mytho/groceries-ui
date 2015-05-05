@@ -34,10 +34,10 @@
         }
 
         function post(scope, elem, attrs) {
-            scope.FULL_SWIPE_THRESHOLD = 0.65;
-            scope.REMOVE_DELAY = 1500;
+            var FULL_SWIPE_THRESHOLD, REMOVE_DELAY, isFinished, startCoords, t;
 
-            scope.undo = undo;
+            FULL_SWIPE_THRESHOLD = 0.65;
+            REMOVE_DELAY = 1500;
 
             scope.styles = {
                 outer: {
@@ -55,6 +55,8 @@
                 }
             };
 
+            scope.undo = undo;
+
             $swipe.bind(elem, {
                 start: start,
                 move: move,
@@ -62,29 +64,29 @@
             });
 
             function end(coords) {
-                if ( ! scope.isFinished) {
+                if ( ! isFinished) {
                     return position(0);
                 }
 
-                scope.t = $timeout(remove, scope.REMOVE_DELAY);
+                t = $timeout(remove, REMOVE_DELAY);
             }
 
             function move(coords) {
-                if (coords.x - scope.startCoords.x < 0) {
+                if (coords.x - startCoords.x < 0) {
                     return position(0);
                 }
 
-                if (elem.find('.swipe-inner').offset().left > elem.find('.swipe-inner').outerWidth() * scope.FULL_SWIPE_THRESHOLD) {
-                    scope.isFinished = true;
+                if (elem.find('.swipe-inner').offset().left > elem.find('.swipe-inner').outerWidth() * FULL_SWIPE_THRESHOLD) {
+                    isFinished = true;
                     return position(elem.find('.swipe-inner').outerWidth());
                 }
 
-                position(coords.x - scope.startCoords.x, true);
+                position(coords.x - startCoords.x, true);
             }
 
             function undo($event) {
                 $event.stopPropagation();
-                $timeout.cancel(scope.t);
+                $timeout.cancel(t);
                 position(0);
             }
 
@@ -111,8 +113,8 @@
             }
 
             function start(coords) {
-                scope.isFinished = false;
-                scope.startCoords = coords;
+                isFinished = false;
+                startCoords = coords;
             }
         }
     }
