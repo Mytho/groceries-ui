@@ -3,7 +3,11 @@
 	<span class="title">List</span>
 </div>
 <div class="content">
-	<div class="item" ng-hide="vm.items.length > 0">
+	<div class="item" ng-show="vm.loading">
+		<i class="fa fa-pulse fa-spinner"></i>
+		<span class="name">Loading...</span>
+	</div>
+	<div class="item" ng-hide="vm.loading || vm.items.length > 0">
 		<i class="fa fa-shopping-cart"></i>
 		<span class="name">Empty</span>
 	</div>

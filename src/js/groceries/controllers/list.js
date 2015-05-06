@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.toggle = toggle;
+        vm.loading = true;
         vm.items = [];
 
         activate();
@@ -20,6 +21,7 @@
                 .then(itemsComplete);
 
             function itemsComplete(items) {
+                vm.loading = false;
                 vm.items = items;
             }
         }
