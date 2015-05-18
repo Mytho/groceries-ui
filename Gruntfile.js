@@ -80,7 +80,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '/*! Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> */\n'
+                banner: '/*! Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> */\n'
             },
             groceries: {
                 files: {
