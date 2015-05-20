@@ -12,6 +12,7 @@
 
         vm.add = add;
         vm.input = '';
+        vm.loading = true;
         vm.suggestions = [];
 
         activate();
@@ -21,6 +22,7 @@
                 .then(suggestComplete);
 
             function suggestComplete(suggestions) {
+                vm.loading = false;
                 vm.suggestions = suggestions;
             }
         }
