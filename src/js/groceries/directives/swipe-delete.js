@@ -37,7 +37,7 @@
 
             scope.undo = undo;
 
-            $swipe.bind(elem, {
+            $swipe.bind(elem.find('.swipe-inner'), {
                 start: start,
                 move: move,
                 end: end
