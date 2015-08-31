@@ -5,4 +5,4 @@
 GROCERIES UI
 ============
 
-A web interface for the Groceries API.
+A web interface for the `Groceries API <https://github.com/Mytho/groceries-api>`_.
