@@ -65,7 +65,7 @@ module.exports = function(grunt) {
             development: {
                 constants: {
                     CONFIG: {
-                        backend: 'http://zengerink.com:8002'
+                        backend: 'http://83.68.18.42:8002'
                     }
                 }
             }
