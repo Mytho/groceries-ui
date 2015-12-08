@@ -4,6 +4,7 @@
   "description": "A web interface for the Groceries API",
   "scripts": {
     "preinstall": "npm install -g gulp",
+		"pretest": "gulp build && gulp js",
     "test": "node ./node_modules/karma/bin/karma start"
   },
   "repository": {

@@ -58,6 +58,7 @@ gulp.task('js', function() {
 })
 
 gulp.task('watch', function() {
+  build('development');
   gulp.watch(paths.css.src, ['css'])
   gulp.watch(paths.js.src, ['js'])
 })
