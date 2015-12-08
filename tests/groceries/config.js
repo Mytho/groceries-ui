@@ -9,7 +9,7 @@ describe('CONFIG', function() {
         CONFIG = $injector.get('CONFIG');
     }));
 
-    it('should contain a `backend` configuration', function() {
-        expect(CONFIG.backend).not.toBe(undefined);
+    it('should contain a `api` configuration', function() {
+        expect(CONFIG.api).not.toBe(undefined);
     });
 });
