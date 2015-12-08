@@ -3,8 +3,7 @@
   "version": "1.0.1",
   "description": "A web interface for the Groceries API",
   "scripts": {
-    "preinstall": "npm install -g gulp",
-		"pretest": "gulp build && gulp js",
+    "pretest": "gulp build && gulp js",
     "test": "node ./node_modules/karma/bin/karma start"
   },
   "repository": {
@@ -18,6 +17,7 @@
   },
   "homepage": "https://github.com/Mytho/groceries-ui",
   "devDependencies": {
+    "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.0",
     "gulp-minify-css": "^1.2.2",
