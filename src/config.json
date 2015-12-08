@@ -1,0 +1,8 @@
+{
+  "development": {
+    "CONFIG": {"api": "http://localhost:8001/"}
+  },
+  "production": {
+    "CONFIG": {"api": "https://groceries-api.herokuapp.com/"}
+  }
+}

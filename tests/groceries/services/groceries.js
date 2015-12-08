@@ -15,7 +15,7 @@ describe('groceriesService', function() {
     it('should add an item', function() {
         var name, responseItem;
         name = 'avocado';
-        $httpBackend.whenPOST(CONFIG.backend+'/item').respond(200, {name: name});
+        $httpBackend.whenPOST(CONFIG.api+'/item').respond(200, {name: name});
         groceriesService.add(name).then(function(item) {
             responseItem = item;
         });
@@ -26,7 +26,7 @@ describe('groceriesService', function() {
     it('should login and get a token', function() {
         var expectedToken, responseToken;
         expectedToken = 'A-TEST-TOKEN';
-        $httpBackend.whenPOST(CONFIG.backend+'/login').respond(200, {token: expectedToken});
+        $httpBackend.whenPOST(CONFIG.api+'/login').respond(200, {token: expectedToken});
         groceriesService.login('tester', 'testing').then(function(token) {
             responseToken = token;
         });
@@ -36,7 +36,7 @@ describe('groceriesService', function() {
 
     it('should allow for catching of any errors during login', function() {
         var caught = false;
-        $httpBackend.whenPOST(CONFIG.backend+'/login').respond(403);
+        $httpBackend.whenPOST(CONFIG.api+'/login').respond(403);
         groceriesService.login('tester', 'testing').catch(function() {
             caught = true;
         });
@@ -47,7 +47,7 @@ describe('groceriesService', function() {
     it('should list all items on the list', function() {
         var expectedItems, responseItems;
         expectedItems = ['apple', 'yoghurt', 'lemon'];
-        $httpBackend.whenGET(CONFIG.backend+'/item').respond(200, {items: expectedItems});
+        $httpBackend.whenGET(CONFIG.api+'/item').respond(200, {items: expectedItems});
         groceriesService.items().then(function(items) {
             responseItems = items;
         });
@@ -58,7 +58,7 @@ describe('groceriesService', function() {
     });
 
     it('should redirect to login when getting a 403 response', function() {
-        $httpBackend.whenGET(CONFIG.backend+'/item').respond(403);
+        $httpBackend.whenGET(CONFIG.api+'/item').respond(403);
         groceriesService.items();
         $httpBackend.flush();
         expect($location.path()).toBe('/logout');
@@ -67,7 +67,7 @@ describe('groceriesService', function() {
     it('should provide a list of suggestions', function() {
         var expectedSuggestions, responseSuggestions;
         expectedSuggestions = {'apples': 3, 'bananas': 5, 'cucumber': 1};
-        $httpBackend.whenGET(CONFIG.backend+'/suggest').respond(200, {suggestions: expectedSuggestions});
+        $httpBackend.whenGET(CONFIG.api+'/suggest').respond(200, {suggestions: expectedSuggestions});
         groceriesService.suggestions().then(function(suggestions) {
             responseSuggestions = suggestions;
         });
@@ -80,7 +80,7 @@ describe('groceriesService', function() {
     it('should remove an item', function() {
         var item, isResponseSuccesful;
         item = {id: 14, name: 'apples'};
-        $httpBackend.whenDELETE(CONFIG.backend+'/item/'+item.id).respond(200, {status: 'ok'});
+        $httpBackend.whenDELETE(CONFIG.api+'/item/'+item.id).respond(200, {status: 'ok'});
         groceriesService.remove(item).then(function(isSuccessful) {
             isResponseSuccesful = isSuccessful;
         });

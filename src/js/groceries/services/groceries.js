@@ -20,7 +20,7 @@
         function add(name) {
             return $http({
                 method: 'POST',
-                url: CONFIG.backend+'/item',
+                url: CONFIG.api+'/item',
                 headers: {'X-Auth-Token': localStorageService.get('token', '')},
                 data: {name: name}
             })
@@ -42,7 +42,7 @@
         function login(username, password) {
             return $http({
                 method: 'POST',
-                url: CONFIG.backend+'/login',
+                url: CONFIG.api+'/login',
                 data: {username: username, password: password}
             })
             .then(loginComplete);
@@ -55,7 +55,7 @@
         function items() {
             return $http({
                 method: 'GET',
-                url: CONFIG.backend+'/item',
+                url: CONFIG.api+'/item',
                 headers: {'X-Auth-Token': localStorageService.get('token', '')}
             })
             .then(itemsComplete)
@@ -69,7 +69,7 @@
         function remove(item) {
             return $http({
                 method: 'DELETE',
-                url: CONFIG.backend+'/item/'+item.id,
+                url: CONFIG.api+'/item/'+item.id,
                 headers: {'X-Auth-Token': localStorageService.get('token', '')}
             })
             .then(removeComplete)
@@ -83,7 +83,7 @@
         function suggestions() {
             return $http({
                 method: 'GET',
-                url: CONFIG.backend+'/suggest',
+                url: CONFIG.api+'/suggest',
                 headers: {'X-Auth-Token': localStorageService.get('token', '')}
             })
             .then(suggestionsComplete)
@@ -97,7 +97,7 @@
         function toggle(item) {
             return $http({
                 method: 'PUT',
-                url: CONFIG.backend+'/item/'+item.id,
+                url: CONFIG.api+'/item/'+item.id,
                 headers: {'X-Auth-Token': localStorageService.get('token', '')}
             })
             .then(toggleIsBoughtComplete)

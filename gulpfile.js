@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
   concat = require('gulp-concat'),
+  config = require('gulp-ng-config'),
   jshint = require('gulp-jshint'),
   minify = require('gulp-minify-css'),
   sourcemaps = require('gulp-sourcemaps'),
@@ -19,10 +20,22 @@ var gulp = require('gulp'),
         'src/js/**/module.js',
         'src/js/**/directives/*.js',
         'src/js/**/services/*.js',
-        'src/js/**/controllers/*.js',
+        'src/js/**/controllers/*.js'
       ]
     }
   };
+
+function build(env) {
+  return gulp.src('src/config.json')
+    .pipe(config('groceries.config', {
+      environment: env
+    }))
+    .pipe(gulp.dest('src/js/groceries'));
+}
+
+gulp.task('build', function() {
+  return build('production');
+})
 
 gulp.task('css', function() {
   return gulp.src(paths.css.src)
