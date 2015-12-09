@@ -3,7 +3,7 @@
 describe('autoFocus', function() {
     var $compile, $rootScope, $timeout, scope, elem;
 
-    beforeEach(module('groceries'));
+    beforeEach(angular.mock.module('groceries'));
 
     beforeEach(inject(function($injector) {
         $compile = $injector.get('$compile');

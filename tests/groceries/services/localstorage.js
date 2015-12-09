@@ -3,7 +3,7 @@
 describe('localStorageService', function() {
     var $window, localStorageService, key, val;
 
-    beforeEach(module('groceries'));
+    beforeEach(angular.mock.module('groceries'));
 
     beforeEach(inject(function($injector) {
         key = 'hello';

@@ -3,7 +3,7 @@
 describe('CONFIG', function() {
     var CONFIG;
 
-    beforeEach(module('groceries'));
+    beforeEach(angular.mock.module('groceries'));
 
     beforeEach(inject(function($injector) {
         CONFIG = $injector.get('CONFIG');
