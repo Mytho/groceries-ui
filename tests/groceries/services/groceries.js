@@ -3,7 +3,7 @@
 describe('groceriesService', function() {
     var $httpBackend, $location, groceriesService, CONFIG;
 
-    beforeEach(module('groceries'));
+    beforeEach(angular.mock.module('groceries'));
 
     beforeEach(inject(function($injector) {
         $httpBackend = $injector.get('$httpBackend');

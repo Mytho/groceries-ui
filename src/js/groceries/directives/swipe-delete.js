@@ -17,13 +17,13 @@
                 items: '=swipeDeleteItems'
             },
             template: '<div class="swipe-outer">'+
-                        '<div class="swipe-inner" ng-transclude></div>'+
-                        '<div class="swipe-undo" ng-click="undo($event)">'+
-                          '<i class="fa fa-trash"></i>'+
-                          '<span class="name">{{item.name}}</span>'+
-                          '<span class="label">UNDO</span>'+
-                        '</div>'+
-                      '</div>',
+                    '<div class="swipe-inner" ng-transclude></div>'+
+                    '<div class="swipe-undo" ng-click="undo($event)">'+
+                        '<i class="fa fa-trash"></i>'+
+                        '<span class="name">{{item.name}}</span>'+
+                        '<span class="label">UNDO</span>'+
+                    '</div>'+
+                '</div>',
             transclude: true,
             replace: true,
             restrict: 'A'

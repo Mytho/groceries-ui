@@ -3,7 +3,7 @@
 describe('groceries', function() {
     var $route;
 
-    beforeEach(module('groceries'));
+    beforeEach(angular.mock.module('groceries'));
 
     beforeEach(inject(function($injector) {
         $route = $injector.get('$route');

@@ -1,9 +1,20 @@
 (function() {
     'use strict';
 
+    require('./config.js');
+
+    var ctx;
+
     angular
         .module('groceries', ['ngRoute', 'ngTouch', 'groceries.config'])
         .config(Config);
+
+    ctx = require.context('./services', true, /\.js$/);
+    ctx.keys().forEach(ctx);
+    ctx = require.context('./directives', true, /\.js$/);
+    ctx.keys().forEach(ctx);
+    ctx = require.context('./controllers', true, /\.js$/);
+    ctx.keys().forEach(ctx);
 
     Config.$inject = ['$routeProvider'];
 

@@ -3,7 +3,7 @@
 describe('LoginController', function() {
     var $controller, $location, $httpBackend, groceriesService, localStorageService;
 
-    beforeEach(module('groceries'));
+    beforeEach(angular.mock.module('groceries'));
 
     beforeEach(inject(function($injector) {
         $controller = $injector.get('$controller');
