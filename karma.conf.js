@@ -5,11 +5,9 @@ module.exports = function(config) {
         browsers: ['PhantomJS'],
         frameworks: ['jasmine'],
         singleRun: true,
-        files: [
-            'tests/spec.js'
-        ],
+        files: ['tests/bootstrap.js'],
         preprocessors: {
-            'tests/spec.js': ['webpack']
+            'tests/*': ['webpack']
         },
         plugins: [
             require('karma-jasmine'),
