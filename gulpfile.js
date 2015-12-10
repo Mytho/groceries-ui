@@ -23,11 +23,11 @@ function build(env) {
 
 gulp.task('build', function() {
     return build('production');
-})
+});
 
 gulp.task('develop', function() {
     return build('development');
-})
+});
 
 gulp.task('css', function() {
     return gulp.src(paths.css.src)
@@ -36,8 +36,8 @@ gulp.task('css', function() {
         .pipe(sourcemaps.write())
         .pipe(minify())
         .pipe(gulp.dest(paths.css.dest));
-})
+});
 
 gulp.task('watch', function() {
   gulp.watch(paths.css.src, ['css'])
-})
+});
