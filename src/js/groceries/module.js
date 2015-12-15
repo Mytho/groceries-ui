@@ -6,7 +6,7 @@
     var ctx;
 
     angular
-        .module('groceries', ['ngRoute', 'ngTouch', 'groceries.config'])
+        .module('groceries', ['ngRoute', 'groceries.config'])
         .config(Config);
 
     ctx = require.context('./services', true, /\.js$/);

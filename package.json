@@ -22,7 +22,6 @@
     "angular": "^1.4.8",
     "angular-mocks": "^1.4.8",
     "angular-route": "^1.4.8",
-    "angular-touch": "^1.4.8",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "^1.2.2",
