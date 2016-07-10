@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mytho/groceries-ui.git"
+    "url": "https://github.com/tzengerink/groceries-ui.git"
   },
   "author": "Teun Zengerink",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mytho/groceries-ui/issues"
+    "url": "https://github.com/tzengerink/groceries-ui/issues"
   },
-  "homepage": "https://github.com/Mytho/groceries-ui",
+  "homepage": "https://github.com/tzengerink/groceries-ui",
   "devDependencies": {
     "angular": "^1.4.8",
     "angular-mocks": "^1.4.8",
