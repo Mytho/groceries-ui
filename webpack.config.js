@@ -1,7 +1,7 @@
 'use strict';
 
 var webpack = require('webpack'),
-    APP = __dirname + '/src/js';
+    APP = __dirname + '/docs/js';
 
 module.exports = {
     module: {
