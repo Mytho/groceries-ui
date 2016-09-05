@@ -5,20 +5,24 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     paths = {
         css: {
-            dest: 'src/css',
+            dest: 'docs/css',
             src: [
-                'src/css/**/*.css',
-                '!src/css/**/*.min.css'
+                'docs/css/**/*.css',
+                '!docs/css/**/*.min.css'
             ]
+        },
+        build: {
+            config: 'docs/config.json',
+            dest: 'docs/js/groceries'
         }
     };
 
 function build(env) {
-    return gulp.src('src/config.json')
+    return gulp.src(paths.build.config)
         .pipe(config('groceries.config', {
             environment: env
         }))
-        .pipe(gulp.dest('src/js/groceries'));
+        .pipe(gulp.dest(paths.build.dest));
 }
 
 gulp.task('build', function() {
