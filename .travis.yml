@@ -3,15 +3,3 @@ node_js:
   - 4.1
 notifications:
   email: false
-deploy:
-  provider: s3
-  access_key_id: AKIAJUMSUUSSBLZZYKHA
-  secret_access_key:
-    secure: RNjTX3hhL0esQyjvHXnTDsJXakXCxiIiQ7To6tuzwx7fVhsBSfFE5Eq3RCXqpZsuHpGushM+8ECSmMPqmat04Wy8TUlNrKyE9Xepl+Kr4bH5QHy/syBdKulB0xrK7s8RCgA0iTS6slbN4JXBALTwpOTIPXrNsDaE19wwL/hgWZ4=
-  bucket: groceries.zengerink.com
-  endpoint: groceries.zengerink.com.s3-website-eu-west-1.amazonaws.com
-  region: eu-west-1
-  local_dir: src
-  cache_control: max-age=604800
-  on:
-    branch: master
